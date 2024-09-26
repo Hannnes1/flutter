@@ -424,7 +424,7 @@ class _MenuAnchorState extends State<MenuAnchor> {
       child = TapRegion(
         groupId: _root,
         consumeOutsideTaps: _root._isOpen && widget.consumeOutsideTap,
-        onTapOutside: (PointerDownEvent event) {
+        onTapOutside: (TapUpDetails details) {
           assert(_debugMenuInfo('Tapped Outside ${widget.controller}'));
           _closeChildren();
         },
@@ -3625,7 +3625,7 @@ class _Submenu extends StatelessWidget {
           child: TapRegion(
             groupId: anchor._root,
             consumeOutsideTaps: anchor._root._isOpen && anchor.widget.consumeOutsideTap,
-            onTapOutside: (PointerDownEvent event) {
+            onTapOutside: (TapUpDetails details) {
               anchor._close();
             },
             child: MouseRegion(

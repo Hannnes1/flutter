@@ -20,7 +20,7 @@ import 'dart:ui' as ui hide TextStyle;
 
 import 'package:characters/characters.dart' show CharacterRange, StringCharacters;
 import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart' show DragStartBehavior;
+import 'package:flutter/gestures.dart' show DragStartBehavior, TapUpDetails;
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -5104,7 +5104,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
   /// The default behavior used if [EditableText.onTapOutside] is null.
   ///
   /// The `event` argument is the [PointerDownEvent] that caused the notification.
-  void _defaultOnTapOutside(PointerDownEvent event) {
+  void _defaultOnTapOutside(TapUpDetails details) {
     /// The focus dropping behavior is only present on desktop platforms
     /// and mobile browsers.
     switch (defaultTargetPlatform) {
@@ -5113,7 +5113,7 @@ class EditableTextState extends State<EditableText> with AutomaticKeepAliveClien
       case TargetPlatform.fuchsia:
       // On mobile platforms, we don't unfocus on touch events unless they're
       // in the web browser, but we do unfocus for all other kinds of events.
-        switch (event.kind) {
+        switch (details.kind) {
           case ui.PointerDeviceKind.touch:
             if (kIsWeb) {
               widget.focusNode.unfocus();
