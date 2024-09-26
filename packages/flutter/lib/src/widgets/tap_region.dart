@@ -36,7 +36,7 @@ bool _tapRegionDebug(String message, [Iterable<String>? details]) {
 /// [TapRegion.onTapInside] take.
 ///
 /// The event is the pointer event that caused the callback to be called.
-typedef TapRegionCallback = void Function(PointerDownEvent event);
+typedef TapRegionCallback = void Function(TapUpDetails event);
 
 /// An interface for registering and unregistering a [RenderTapRegion]
 /// (typically created with a [TapRegion] widget) with a
@@ -187,6 +187,8 @@ class RenderTapRegionSurface extends RenderProxyBoxWithHitTestBehavior implement
   final Set<RenderTapRegion> _registeredRegions = <RenderTapRegion>{};
   final Map<Object?, Set<RenderTapRegion>> _groupIdToRegions = <Object?, Set<RenderTapRegion>>{};
 
+  late PointerDownEvent _latestPointerDownEvent;
+
   @override
   void registerTapRegion(RenderTapRegion region) {
     assert(_tapRegionDebug('Region $region registered.'));
@@ -241,7 +243,23 @@ class RenderTapRegionSurface extends RenderProxyBoxWithHitTestBehavior implement
       return true;
     }(), 'A RenderTapRegion was registered when it was disabled.');
 
-    if (event is! PointerDownEvent) {
+    if (event is PointerDownEvent) {
+      _latestPointerDownEvent = event;
+      return;
+    } else if (event is! PointerUpEvent) {
+      return;
+    }
+
+    final TapUpDetails details = TapUpDetails(
+      kind: event.kind,
+      globalPosition: event.position,
+      localPosition: event.localPosition,
+    );
+
+    final double distance = (_latestPointerDownEvent.position - event.position).distance;
+
+    if (distance > computeHitSlop(details.kind, null)) {
+      assert(_tapRegionDebug('Ignored pointer event because it was a pan.'));
       return;
     }
 
@@ -279,11 +297,11 @@ class RenderTapRegionSurface extends RenderProxyBoxWithHitTestBehavior implement
         assert(_tapRegionDebug('Stopping tap propagation for $region (and all of ${region.groupId})'));
         consumeOutsideTaps = true;
       }
-      region.onTapOutside?.call(event);
+      region.onTapOutside?.call(details);
     }
     for (final RenderTapRegion region in insideRegions) {
       assert(_tapRegionDebug('Calling onTapInside for $region'));
-      region.onTapInside?.call(event);
+      region.onTapInside?.call(details);
     }
 
     // If any of the "outside" regions have consumeOutsideTaps set, then stop
