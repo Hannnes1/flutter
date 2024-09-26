@@ -22,21 +22,21 @@ void main() {
                 children: <Widget>[
                   const Text('Outside'),
                   TapRegion(
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('No Group');
                     },
                     child: const Text('No Group'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 A');
                     },
                     child: const Text('Group 1 A'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 B');
                     },
                     child: const Text('Group 1 B'),
@@ -121,14 +121,14 @@ void main() {
                   ),
                   TapRegion(
                     consumeOutsideTaps: true,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('No Group');
                     },
                     child: const Text('No Group'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 A');
                     },
                     child: const Text('Group 1 A'),
@@ -136,7 +136,7 @@ void main() {
                   TapRegion(
                     groupId: 1,
                     consumeOutsideTaps: true,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 B');
                     },
                     child: const Text('Group 1 B'),
@@ -219,21 +219,21 @@ void main() {
                 children: <Widget>[
                   const Text('Outside'),
                   TapRegion(
-                    onTapInside: (PointerEvent event) {
+                    onTapInside: (TapUpDetails details) {
                       tappedInside.add('No Group');
                     },
                     child: const Text('No Group'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapInside: (PointerEvent event) {
+                    onTapInside: (TapUpDetails details) {
                       tappedInside.add('Group 1 A');
                     },
                     child: const Text('Group 1 A'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapInside: (PointerEvent event) {
+                    onTapInside: (TapUpDetails details) {
                       tappedInside.add('Group 1 B');
                     },
                     child: const Text('Group 1 B'),
@@ -310,7 +310,7 @@ void main() {
                   ConstrainedBox(
                     constraints: const BoxConstraints.tightFor(width: 100, height: 100),
                     child: TapRegion(
-                      onTapInside: (PointerEvent event) {
+                      onTapInside: (TapUpDetails details) {
                         tappedInside.add(noGroupKey.value);
                       },
                       child: const Stack(key: noGroupKey),
@@ -321,7 +321,7 @@ void main() {
                     child: TapRegion(
                       groupId: 1,
                       behavior: HitTestBehavior.opaque,
-                      onTapInside: (PointerEvent event) {
+                      onTapInside: (TapUpDetails details) {
                         tappedInside.add(group1AKey.value);
                       },
                       child: const Stack(key: group1AKey),
@@ -332,7 +332,7 @@ void main() {
                     child: TapRegion(
                       groupId: 1,
                       behavior: HitTestBehavior.translucent,
-                      onTapInside: (PointerEvent event) {
+                      onTapInside: (TapUpDetails details) {
                         tappedInside.add(group1BKey.value);
                       },
                       child: const Stack(key: group1BKey),
@@ -390,14 +390,14 @@ void main() {
               const Text('Outside'),
               TapRegion(
                 groupId: 1,
-                onTapOutside: (PointerEvent event) {
+                onTapOutside: (TapUpDetails details) {
                   tappedOutside.add('Group 1 A');
                 },
                 child: const Text('Group 1 A'),
               ),
               TapRegion(
                 groupId: 1,
-                onTapOutside: (PointerEvent event) {
+                onTapOutside: (TapUpDetails details) {
                   tappedOutside.add('Group 1 B');
                 },
                 child: const Text('Group 1 B'),
@@ -444,14 +444,14 @@ void main() {
               const Text('Outside'),
               TapRegion(
                 groupId: 1,
-                onTapOutside: (PointerEvent event) {
+                onTapOutside: (TapUpDetails details) {
                   tappedOutside.add('Group 1 A');
                 },
                 child: const Text('Group 1 A'),
               ),
               TapRegion(
                 groupId: 2,
-                onTapOutside: (PointerEvent event) {
+                onTapOutside: (TapUpDetails details) {
                   tappedOutside.add('Group 2 A');
                 },
                 child: const Text('Group 2 A'),
@@ -493,21 +493,21 @@ void main() {
                 children: <Widget>[
                   const Text('Outside'),
                   TapRegion(
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('No Group');
                     },
                     child: const Text('No Group'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 A');
                     },
                     child: const Text('Group 1 A'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 B');
                     },
                     child: const Text('Group 1 B'),
@@ -586,21 +586,21 @@ void main() {
                 children: <Widget>[
                   const Text('Outside'),
                   TapRegion(
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('No Group');
                     },
                     child: const Text('No Group'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 A');
                     },
                     child: const Text('Group 1 A'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 B');
                     },
                     child: const Text('Group 1 B'),
@@ -686,14 +686,14 @@ void main() {
                   ),
                   TapRegion(
                     consumeOutsideTaps: true,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('No Group');
                     },
                     child: const Text('No Group'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 A');
                     },
                     child: const Text('Group 1 A'),
@@ -701,7 +701,7 @@ void main() {
                   TapRegion(
                     groupId: 1,
                     consumeOutsideTaps: true,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 B');
                     },
                     child: const Text('Group 1 B'),
@@ -792,14 +792,14 @@ void main() {
                   ),
                   TapRegion(
                     consumeOutsideTaps: true,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('No Group');
                     },
                     child: const Text('No Group'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 A');
                     },
                     child: const Text('Group 1 A'),
@@ -807,7 +807,7 @@ void main() {
                   TapRegion(
                     groupId: 1,
                     consumeOutsideTaps: true,
-                    onTapOutside: (PointerEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       tappedOutside.add('Group 1 B');
                     },
                     child: const Text('Group 1 B'),
@@ -891,21 +891,21 @@ void main() {
                 children: <Widget>[
                   const Text('Outside'),
                   TapRegion(
-                    onTapInside: (PointerEvent event) {
+                    onTapInside: (TapUpDetails details) {
                       tappedInside.add('No Group');
                     },
                     child: const Text('No Group'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapInside: (PointerEvent event) {
+                    onTapInside: (TapUpDetails details) {
                       tappedInside.add('Group 1 A');
                     },
                     child: const Text('Group 1 A'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapInside: (PointerEvent event) {
+                    onTapInside: (TapUpDetails details) {
                       tappedInside.add('Group 1 B');
                     },
                     child: const Text('Group 1 B'),
@@ -979,21 +979,21 @@ void main() {
                 children: <Widget>[
                   const Text('Outside'),
                   TapRegion(
-                    onTapInside: (PointerEvent event) {
+                    onTapInside: (TapUpDetails details) {
                       tappedInside.add('No Group');
                     },
                     child: const Text('No Group'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapInside: (PointerEvent event) {
+                    onTapInside: (TapUpDetails details) {
                       tappedInside.add('Group 1 A');
                     },
                     child: const Text('Group 1 A'),
                   ),
                   TapRegion(
                     groupId: 1,
-                    onTapInside: (PointerEvent event) {
+                    onTapInside: (TapUpDetails details) {
                       tappedInside.add('Group 1 B');
                     },
                     child: const Text('Group 1 B'),

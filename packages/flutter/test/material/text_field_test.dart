@@ -819,7 +819,7 @@ void main() {
                   child: TextField(
                     key: keyA,
                     groupId: 'Group A',
-                    onTapOutside: (PointerDownEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       outsideClickA = true;
                     },
                   ),
@@ -828,7 +828,7 @@ void main() {
                   child: TextField(
                     key: keyB,
                     groupId: 'Group B',
-                    onTapOutside: (PointerDownEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       outsideClickB = true;
                     },
                   ),
@@ -837,7 +837,7 @@ void main() {
                   child: TextField(
                     key: keyC,
                     groupId: 'Group C',
-                    onTapOutside: (PointerDownEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       outsideClickC = true;
                     },
                   ),
@@ -17612,7 +17612,7 @@ void main() {
                       return fakeMagnifier;
                     },
                 ),
-                onTapOutside: (PointerDownEvent event) {
+                onTapOutside: (TapUpDetails details) {
                   FocusManager.instance.primaryFocus?.unfocus();
                 }
               ),

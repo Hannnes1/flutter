@@ -932,7 +932,7 @@ void main() {
                   child: CupertinoTextField(
                     key: keyA,
                     groupId: 'Group A',
-                    onTapOutside: (PointerDownEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       outsideClickA = true;
                     },
                   ),
@@ -941,7 +941,7 @@ void main() {
                   child: CupertinoTextField(
                     key: keyB,
                     groupId: 'Group B',
-                    onTapOutside: (PointerDownEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       outsideClickB = true;
                     },
                   ),
@@ -950,7 +950,7 @@ void main() {
                   child: CupertinoTextField(
                     key: keyC,
                     groupId: 'Group C',
-                    onTapOutside: (PointerDownEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       outsideClickC = true;
                     },
                   ),

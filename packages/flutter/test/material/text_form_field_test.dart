@@ -773,7 +773,7 @@ void main() {
                 const Text('Outside'),
                 TextFormField(
                   autofocus: true,
-                  onTapOutside: (PointerEvent event) {
+                  onTapOutside: (TapUpDetails details) {
                     tapOutsideCount += 1;
                   },
                 ),
@@ -804,7 +804,7 @@ void main() {
               children: <Widget>[
                 const Text('Outside'),
                 TextFormField(
-                  onTapOutside: (PointerEvent event) {
+                  onTapOutside: (TapUpDetails details) {
                     tapOutsideCount += 1;
                   },
                 ),
@@ -845,7 +845,7 @@ void main() {
                   child: TextFormField(
                     key: keyA,
                     groupId: 'Group A',
-                    onTapOutside: (PointerDownEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       outsideClickA = true;
                     },
                   ),
@@ -854,7 +854,7 @@ void main() {
                   child: TextFormField(
                     key: keyB,
                     groupId: 'Group B',
-                    onTapOutside: (PointerDownEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       outsideClickB = true;
                     },
                   ),
@@ -863,7 +863,7 @@ void main() {
                   child: TextFormField(
                     key: keyC,
                     groupId: 'Group C',
-                    onTapOutside: (PointerDownEvent event) {
+                    onTapOutside: (TapUpDetails details) {
                       outsideClickC = true;
                     },
                   ),
