@@ -660,7 +660,7 @@ class CupertinoTextField extends StatefulWidget {
   final ValueChanged<String>? onSubmitted;
 
   /// {@macro flutter.widgets.editableText.onTapOutside}
-  final TapRegionCallback? onTapOutside;
+  final TapRegionTapCallback? onTapOutside;
 
   /// {@macro flutter.widgets.editableText.inputFormatters}
   final List<TextInputFormatter>? inputFormatters;

@@ -424,7 +424,7 @@ class _MenuAnchorState extends State<MenuAnchor> {
       child = TapRegion(
         groupId: _root,
         consumeOutsideTaps: _root._isOpen && widget.consumeOutsideTap,
-        onTapOutside: (TapUpDetails details) {
+        onTapOutside: () {
           assert(_debugMenuInfo('Tapped Outside ${widget.controller}'));
           _closeChildren();
         },
